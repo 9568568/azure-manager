@@ -1,0 +1,14 @@
+name: Build Docker Image
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Build Docker Image
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: tvision08/azure-manager
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASS }}
